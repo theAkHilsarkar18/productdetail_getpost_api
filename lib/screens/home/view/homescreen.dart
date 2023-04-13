@@ -29,9 +29,7 @@ class _HomescreenState extends State<Homescreen> {
     return SafeArea(
       child: Scaffold(
         body: Center(
-          child: homeproviderTrue!.productList == null
-              ? CircularProgressIndicator()
-              : Text("${homeproviderTrue!.productList.length}")
+          child: Text("${homeproviderTrue!.productList[0].productCategory}"),
         ),
       ),
     );
