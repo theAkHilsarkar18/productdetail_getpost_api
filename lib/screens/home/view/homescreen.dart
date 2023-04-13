@@ -23,13 +23,14 @@ class _HomescreenState extends State<Homescreen> {
 
   @override
   Widget build(BuildContext context) {
+
     homeproviderFalse = Provider.of(context,listen: false);
-    homeproviderFalse = Provider.of(context,listen: true);
+    homeproviderTrue = Provider.of(context,listen: true);
 
     return SafeArea(
       child: Scaffold(
         body: Center(
-          child: Text("${homeproviderTrue!.productList[0].productCategory}"),
+          child: Text("${homeproviderTrue!.productList.length}"),
         ),
       ),
     );
