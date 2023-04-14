@@ -29,7 +29,8 @@ class ProductModel {
   String productDesc;
   String productRate;
 
-  factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
+  factory ProductModel.
+  fromJson(Map<String, dynamic> json) => ProductModel(
     id: json["id"],
     productName: json["product_name"],
     productPrice: json["product_price"],

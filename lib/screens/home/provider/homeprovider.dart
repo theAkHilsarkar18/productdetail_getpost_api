@@ -16,7 +16,6 @@ class Homeprovider extends ChangeNotifier
   Future<String> postApiCalling(String name,String rate,String price, String offer,String desc)
   async {
     String msg = await Apihelper().postProductApi(name, rate, price, offer, desc);
-    notifyListeners();
     return msg;
   }
 
