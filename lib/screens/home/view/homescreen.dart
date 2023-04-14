@@ -11,27 +11,31 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
-
-  Homeprovider? homeproviderFalse;
-  Homeprovider? homeproviderTrue;
-
-  @override
+ @override
   void initState() {
+    // TODO: implement initState
     super.initState();
     Provider.of<Homeprovider>(context, listen: false).productApiCalling();
   }
-
+  Homeprovider? homeproviderFalse;
+  Homeprovider? homeproviderTrue;
   @override
   Widget build(BuildContext context) {
 
-    homeproviderFalse = Provider.of(context,listen: false);
-    homeproviderTrue = Provider.of(context,listen: true);
+    homeproviderFalse = Provider.of<Homeprovider>(context,listen: false);
+    homeproviderTrue = Provider.of<Homeprovider>(context,listen: true);
 
     return SafeArea(
       child: Scaffold(
-        body: Center(
-          child: Text("${homeproviderTrue!.productList.length}"),
-        ),
+        body: ListView.builder(itemBuilder: (context, index) {
+          return Container(
+            height: 200,
+            width: double.infinity,
+            color: Colors.red,
+            child: Text("${homeproviderTrue!.productList[index].productName}"),
+          );
+        },itemCount: homeproviderTrue!.productList.length,),
+        
       ),
     );
   }

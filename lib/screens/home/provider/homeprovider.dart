@@ -8,9 +8,7 @@ class Homeprovider extends ChangeNotifier
   Future<void> productApiCalling()
   async {
     Apihelper apihelper = Apihelper();
-    var p1 = await apihelper.getProductApi();
-    productList = p1.map((e) => ProductModel.fromJson(e)).toList();
-    print("${productList.length}====================================================");
+    productList = await apihelper.getProductApi();
     notifyListeners();
   }
 }
