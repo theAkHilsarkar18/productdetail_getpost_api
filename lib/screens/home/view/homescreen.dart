@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:provider/provider.dart';
 import '../provider/homeprovider.dart';
 
@@ -12,6 +10,7 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
+
   @override
   void initState() {
     // TODO: implement initState
@@ -26,7 +25,7 @@ class _HomescreenState extends State<Homescreen> {
   Widget build(BuildContext context) {
 
 
-    TextEditingController txtName = TextEditingController(text: "iPhone14 Pro");
+    TextEditingController txtName = TextEditingController(text: "A iPhone14 Pro");
     TextEditingController txtPrice = TextEditingController(text: "1,75,000");
     TextEditingController txtDisc = TextEditingController(text: "1200");
     TextEditingController txtDesc = TextEditingController(text: "16 GB RAM, 512 GB Storage");
@@ -110,11 +109,10 @@ class _HomescreenState extends State<Homescreen> {
                           String price  = txtPrice.text;
                           String offer  = txtDisc.text;
                           String desc  = txtDesc.text;
-                          String msg =  await homeproviderFalse!.postApiCalling(name, rate, price, offer, desc);
+                          String msg = await homeproviderFalse!.postApiCalling(name, rate, price, offer, desc);
                           homeproviderFalse!.productApiCalling();
                           print("${msg}====================================================================");
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("$msg")));
-                          // Get.snackbar('msg','${msg}');
                           Navigator.pop(context);
                         },
                           child: Container(

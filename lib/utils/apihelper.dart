@@ -4,19 +4,19 @@ import 'package:productdetail_getpost_api/screens/home/model/homemodel.dart';
 
 class Apihelper
 {
-  Future<List<ProductModel>> getProductApi()
+  Future<List<dynamic>> getProductApi()
   async {
     Uri uri = Uri.parse("https://apidatahub.000webhostapp.com/MyShop/API/products.php");
     var response = await http.get(uri);
     var json = jsonDecode(response.body);
-    List<ProductModel>  productList =[];
-
+    List<dynamic> pList = [];
+    //List<dynamic> pList = json.map((e) => ProductModel.fromJson(e)).toList();
     for(var x in json)
       {
         ProductModel  p1 = ProductModel.fromJson(x);
-        productList.add(p1);
+        pList.add(p1);
       }
-    return productList;
+    return pList;
   }
 
 
@@ -24,17 +24,20 @@ class Apihelper
   async {
     Uri uri = Uri.parse("https://apidatahub.000webhostapp.com/MyShop/API/adddataapi.php");
     var json = await http.post(uri,body: {
-      "p_name": name,
-      "p_rate": rate,
-      "p_price": price,
-      "p_offer": offer,
-      "p_desc": desc,
+      "product_name": name,
+      "product_price": price,
+      "product_offer": offer,
+      "product_category": "mobile",
+      "product_image": "google.com",
+      "product_desc": desc,
+      "product_rate": rate,
     });
+    print("post api called------------------------------------------------");
     if(json.statusCode==200)
       {
         return "Added Successful !";
       }
     return "Failed !";
-    print("${json.statusCode}");
+
   }
 }
